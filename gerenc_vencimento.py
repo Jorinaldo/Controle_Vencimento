@@ -193,7 +193,6 @@ atualizar_lista()
 # Exibir alerta ao iniciar o programa
 exibir_alerta()
 
-# Centralizar a janela
 largura_janela = 1000  # Ajuste de largura aqui
 altura_janela = 500
 largura_tela = root.winfo_screenwidth()
@@ -202,5 +201,4 @@ x_pos = largura_tela / 2 - largura_janela / 2
 y_pos = altura_tela / 2 - altura_janela / 2
 root.geometry(f'{largura_janela}x{altura_janela}+{int(x_pos)}+{int(y_pos)}')
 
-# Iniciar a interface gráfica
 root.mainloop()
