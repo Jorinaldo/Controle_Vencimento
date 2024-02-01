@@ -125,7 +125,7 @@ def atualizar_lista():
         botao_remover = criar_botao_remover(i)
         botao_remover.grid(row=i + 7, column=3)
 
-        # Configurar a tag para destacar a linha selecionada
+        #
         lista_produtos.tag_configure(f'linha{i}', background='white')
 
         # Adicionar a tag à linha atual
