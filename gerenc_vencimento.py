@@ -213,7 +213,7 @@ exibir_alerta()
 
 # Configurações da janela
 largura_janela = 1000  # Ajuste de largura aqui
-altura_janela = 500
+altura_janela = 600
 largura_tela = root.winfo_screenwidth()
 altura_tela = root.winfo_screenheight()
 x_pos = largura_tela / 2 - largura_janela / 2
