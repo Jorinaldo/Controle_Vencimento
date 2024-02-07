@@ -2,6 +2,7 @@ import tkinter as tk
 from datetime import datetime, timedelta
 import json
 from tkinter import messagebox
+from PIL import Image, ImageTk
 
 def adicionar_produto():
     nome = entry_nome.get()
@@ -26,6 +27,12 @@ def adicionar_produto():
             'quantidade': quantidade,
             'data_adicao': data_adicao
         })
+
+        # Limpar os campos de entrada
+        entry_nome.delete(0, tk.END)
+        entry_marca.delete(0, tk.END)
+        entry_data.delete(0, tk.END)
+        entry_quantidade.delete(0, tk.END)
 
         salvar_dados()
         atualizar_lista()
@@ -171,21 +178,32 @@ botao_desfazer = tk.Button(root, text="Desfazer Adição", command=desfazer_adic
 botao_alerta = tk.Button(root, text="Exibir Alerta", command=exibir_alerta)
 lista_produtos = tk.Text(root, height=20, width=100)  # Ajuste de largura aqui
 
-# Layout
-label_nome.grid(row=0, column=0, sticky=tk.W)
-label_marca.grid(row=1, column=0, sticky=tk.W)
-label_data.grid(row=2, column=0, sticky=tk.W)
-label_quantidade.grid(row=3, column=0, sticky=tk.W)
+# Carregar e redimensionar a logomarca
+logo_image = Image.open("marcaempresa.png")
+logo_image = logo_image.resize((100, 50))  # Redimensionar pela metade
 
-entry_nome.grid(row=0, column=1)
-entry_marca.grid(row=1, column=1)
-entry_data.grid(row=2, column=1)
-entry_quantidade.grid(row=3, column=1)
+# Converter a imagem para o formato que o tkinter pode usar
+logo = ImageTk.PhotoImage(logo_image)
 
-botao_adicionar.grid(row=4, column=0, columnspan=2)
-botao_desfazer.grid(row=4, column=2, columnspan=2)
-botao_alerta.grid(row=5, column=0, columnspan=2)
-lista_produtos.grid(row=6, column=0, columnspan=4)  # Ajuste de coluna aqui
+# Exibir a logomarca em um Label
+label_logo = tk.Label(root, image=logo)
+label_logo.grid(row=0, column=3, sticky="e")  # Movendo para a outra extremidade
+
+# Layout dos demais widgets
+label_nome.grid(row=1, column=0, sticky=tk.W)
+label_marca.grid(row=2, column=0, sticky=tk.W)
+label_data.grid(row=3, column=0, sticky=tk.W)
+label_quantidade.grid(row=4, column=0, sticky=tk.W)
+
+entry_nome.grid(row=1, column=1)
+entry_marca.grid(row=2, column=1)
+entry_data.grid(row=3, column=1)
+entry_quantidade.grid(row=4, column=1)
+
+botao_adicionar.grid(row=5, column=0, columnspan=2)
+botao_desfazer.grid(row=5, column=2, columnspan=2)
+botao_alerta.grid(row=6, column=0, columnspan=2)
+lista_produtos.grid(row=7, column=0, columnspan=4)  # Ajuste de coluna aqui
 
 # Atualizar a lista ao iniciar o programa
 atualizar_lista()
@@ -193,6 +211,7 @@ atualizar_lista()
 # Exibir alerta ao iniciar o programa
 exibir_alerta()
 
+# Configurações da janela
 largura_janela = 1000  # Ajuste de largura aqui
 altura_janela = 500
 largura_tela = root.winfo_screenwidth()
