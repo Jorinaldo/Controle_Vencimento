@@ -179,7 +179,7 @@ botao_alerta = tk.Button(root, text="Exibir Alerta", command=exibir_alerta)
 lista_produtos = tk.Text(root, height=20, width=100)  # Ajuste de largura aqui
 
 # Carregar e redimensionar a logomarca
-logo_image = Image.open("marcaempresa.png")
+logo_image = Image.open("marcaempresa.jpeg")
 logo_image = logo_image.resize((100, 50))  # Redimensionar pela metade
 
 # Converter a imagem para o formato que o tkinter pode usar
