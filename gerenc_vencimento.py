@@ -2,7 +2,6 @@ import tkinter as tk
 from datetime import datetime, timedelta
 import json
 from tkinter import messagebox
-from PIL import Image, ImageTk
 
 def adicionar_produto():
     nome = entry_nome.get()
@@ -177,17 +176,6 @@ botao_adicionar = tk.Button(root, text="Adicionar Produto", command=adicionar_pr
 botao_desfazer = tk.Button(root, text="Desfazer Adição", command=desfazer_adicao)
 botao_alerta = tk.Button(root, text="Exibir Alerta", command=exibir_alerta)
 lista_produtos = tk.Text(root, height=20, width=100)  # Ajuste de largura aqui
-
-# Carregar e redimensionar a logomarca
-logo_image = Image.open("marcaempresa.jpeg")
-logo_image = logo_image.resize((150, 50))  # Redimensionar pela metade
-
-# Converter a imagem para o formato que o tkinter pode usar
-logo = ImageTk.PhotoImage(logo_image)
-
-# Exibir a logomarca em um Label
-label_logo = tk.Label(root, image=logo)
-label_logo.grid(row=0, column=3, sticky="e")  # Movendo para a outra extremidade
 
 # Layout dos demais widgets
 label_nome.grid(row=1, column=0, sticky=tk.W)
